@@ -1,7 +1,6 @@
 #ifndef MYSTRUCT_H
 #define MYSTRUCT_H
 
-
 typedef struct {
   int id;
   char name[30];
@@ -25,5 +24,7 @@ void printMenu(const char *menu[], int l);
 int menuChoice(int numbersOfC);
 
 void beverageToMenu(char *menu[], int start, int stop, Beverage *b, int lOfb);
+
+void progressBar(int time, int space);
 
 #endif

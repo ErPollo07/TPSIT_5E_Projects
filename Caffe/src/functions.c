@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 #include "mystruct.h"
 
@@ -11,9 +12,21 @@ void printBeverageInPrep(const BeverageInPrep *b) {
   printf("Nome: %s, price: %d\n", b->name, b->price);
 }
 
+
+
+// ===== Menu =====
+
+// Print the menu
+// The first is printed without the index because it's considerd the title
+// The last choice is considerd the Exit so it has -1 as its index
 void printMenu(const char *menu[], int l) {
+  printf("%s\n", menu[0]);
+
   for (int i = 1; i < l; i++) {
-    printf("[%d] - %s\n", (i+1), menu[i]);
+    if (i == l - 1) 
+      printf("[-1] - %s\n", menu[i]);
+    else
+      printf("[%d] - %s\n", (i), menu[i]);
   }
 }
 
@@ -37,7 +50,7 @@ int menuChoice(int numbersOfC) {
   return choice;
 }
 
-// ===== Menu =====
+// Trasform an array of beverage into a menu of strings and add these string on the bottom of the "char *menu[]"
 void beverageToMenu(char *menu[], int start, int stop, Beverage *b, int lOfb) {
   int maxItems = stop - start;
   if (lOfb > maxItems) {
@@ -56,5 +69,17 @@ void beverageToMenu(char *menu[], int start, int stop, Beverage *b, int lOfb) {
     } else {
       fprintf(stderr, "Errore: memoria insufficiente per voce di menu.\n");
     }
+  }
+}
+
+
+
+
+// ===== PROGRES BAR =====
+
+void progressBar(int time, int space) {
+  for (int i = 0; i < time; i++) {
+    printf("=");
+    sleep(1);
   }
 }
