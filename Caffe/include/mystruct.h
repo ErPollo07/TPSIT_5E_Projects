@@ -1,11 +1,6 @@
 #ifndef MYSTRUCT_H
 #define MYSTRUCT_H
 
-typedef struct {
-  const int TRASH_MAX = 2;
-  const int WATER_MAX = 100;
-} RuntimeApp;
-
 
 typedef struct {
   int id;
@@ -25,11 +20,10 @@ typedef struct {
 
 void printBeverageInPrep(const BeverageInPrep *b);
 
-
-void printMenu(const char *menu[]);
+void printMenu(const char *menu[], int l);
 
 int menuChoice(int numbersOfC);
 
-void beverageToMenu(const *menu[], int start, int stop, Beverage *b, int lOfb);
+void beverageToMenu(char *menu[], int start, int stop, Beverage *b, int lOfb);
 
 #endif

@@ -12,7 +12,7 @@ void printBeverageInPrep(const BeverageInPrep *b) {
 }
 
 void printMenu(const char *menu[], int l) {
-  for (int i  = 0; i < l; i++) {
+  for (int i = 1; i < l; i++) {
     printf("[%d] - %s\n", (i+1), menu[i]);
   }
 }
@@ -26,22 +26,19 @@ int menuChoice(int numbersOfC) {
     printf("Inserisci la scelta: ");
     scanf("%d", &choice);
 
-    if (choice == -1) {
-      isValid = 1;
-      break;
-    }
+    if (choice == -1) break;
 
-    if (chioce < 1 || chioce > l) {
-      printf("Scelta non valida.");
+    if (choice < 1 || choice > numbersOfC) {
+      printf("Scelta non valida.\n");
       isValid = 0;
     }
   }
 
-  return chioce;
+  return choice;
 }
 
 // ===== Menu =====
-void beverageToMenu(const *menu[], int start, int stop, Beverage *b, int lOfb) {
+void beverageToMenu(char *menu[], int start, int stop, Beverage *b, int lOfb) {
   int maxItems = stop - start;
   if (lOfb > maxItems) {
     lOfb = maxItems;
